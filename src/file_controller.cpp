@@ -109,19 +109,20 @@ bool FileController::getPcdFile (std::vector<std::string>& file_names)
 {
     /* 指定ディレクトリ内のすべてのpcdファイルを取得 */
     std::vector<std::string> all_file_names;
-    getAllPcdFiles(directory_path_, all_file_names);
-    printVector(all_file_names, "all file names");
+    // getAllPcdFiles(directory_path_, all_file_names);
+    // printVector(all_file_names, "all file names");
     /* "*"ならばすべてのpcdファイルをfile_namesに格納．そうでなければ指定ファイルを検索 */
     for (auto& it: map_args_[KEYS[INPUT_FILE_NAMES]])
     {
-        auto file_itr = std::find(all_file_names.begin(), all_file_names.end(), it);
-        if (file_itr != all_file_names.end())
-            file_names.push_back(createFilePath(directory_path_, it));
-        else
-        {
-            std::printf("don't find %s\n", it.c_str());
-            return false;
-        }
+        file_names.push_back(it);
+        // auto file_itr = std::find(all_file_names.begin(), all_file_names.end(), it);
+        // if (file_itr != all_file_names.end())
+        //     file_names.push_back(createFilePath(directory_path_, it));
+        // else
+        // {
+        //     std::printf("don't find %s\n", it.c_str());
+        //     return false;
+        // }
     }
     file_names.erase(std::remove_if(file_names.begin(), file_names.end(), [=](std::string n){return (n.find(EXTENSION)==std::string::npos);}), file_names.end());
     /* 指定ファイルがすべて存在すればtrue */
