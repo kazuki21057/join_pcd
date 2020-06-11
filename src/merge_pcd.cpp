@@ -9,7 +9,11 @@ MergePcd::MergePcd(const std::vector<std::string>& c_file_names)
     for (int i=0; i<c_file_names.size(); ++i)
     {
         std::printf("load %s\n", c_file_names[i].c_str());
-        pcl::io::loadPCDFile(c_file_names[i], clouds_[i]);
+        if (pcl::io::loadPCDFile(c_file_names[i], clouds_[i]) == -1)
+        {
+            std::printf("shutdown...\n");
+            exit(0);
+        }
     }
 }
 
