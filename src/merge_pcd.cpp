@@ -30,7 +30,15 @@ void MergePcd::mergeCloud (pcl::PointCloud<pcl::PointXYZI>& cloud_merged)
 
 void MergePcd::savePcdFile (const std::string& c_output_file_path, const pcl::PointCloud<pcl::PointXYZI>& c_cloud_output)
 {
+    try
+    {
+        pcl::io::savePCDFileBinary(c_output_file_path, c_cloud_output);        
+    }
+    catch(const pcl::IOException& e)
+    {
+        std::cerr << e.what() << '\n';
+        exit(0);
+    }    
     std::printf("save merged clouds to %s\n", c_output_file_path.c_str());
-    pcl::io::savePCDFileBinary(c_output_file_path, c_cloud_output);
     return;
 }
