@@ -24,13 +24,13 @@ $ make
 join_pcdがあるディレクトリパスを`JOIN_PCD_PATH`とします．
 
 ```
-$ JOIN_PCD_PATH/build/join_pcd -i <input file name 1> <input file name 2> ... -d <directory path> -o <output file name>
+$ JOIN_PCD_PATH/build/join_pcd -i <input file name 1> <input file name 2> ... -o <output file name>
 ```
 
 ### 引数
 
-指定キーワード（`-i`, `-o`, `-d`）の後に，それぞれの情報を入力します．
-引数の指定順番はバラバラで問題ありません．  
+指定キーワード（`-i`, `-o`）の後に，それぞれの情報を入力します．
+引数の指定順番はバラバラで問題ありません．また、パス指定は絶対/相対どちらでも可能です。  
 指定キーワードの説明は下記．
 
 - -i: 結合したいpcdファイル名
@@ -38,5 +38,3 @@ $ JOIN_PCD_PATH/build/join_pcd -i <input file name 1> <input file name 2> ... -d
     - ”\*”または”\*.pcd”を指定した場合は，指定ディレクトリ内にあるすべてのpcdファイルを入力とします．
 - -o: 結合後の出力pcdファイル名
     - 拡張子の有無は関係ありません．
-- -d: pcdファイルがあるディレクトリパス
-    - 相対パス，絶対パスどちらも指定可能です．
