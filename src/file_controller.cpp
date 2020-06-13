@@ -15,8 +15,8 @@ FileController::FileController (const int c_argc, const char** c_argv)
     {
         if (existKeyNumber(args, KEYS[i]))
             key_number.push_back(getKeyNumber(args, KEYS[i]));
-        else
-        {
+        else if (KEYS[i] != "-d")
+        { // ignore -d option
             std::printf("set %s argument\n", KEYS[i].c_str());
             exit(1);
         }
@@ -34,7 +34,7 @@ FileController::FileController (const int c_argc, const char** c_argv)
         printVector(vec_args_, args[key_number[i]]);
     }
     /* directory path 取得 */
-    directory_path_ = map_args_[KEYS[INPUT_DIRECTORY]][0];
+    // directory_path_ = map_args_[KEYS[INPUT_DIRECTORY]][0];
     /* input file names 確認 */
     for (auto& it: map_args_[KEYS[OUTPUT_FILE_NAME]])
         checkExtension(it);
@@ -132,5 +132,6 @@ bool FileController::getPcdFile (std::vector<std::string>& file_names)
 
 std::string FileController::getOutputFilePath (void)
 {
-    return createFilePath(directory_path_, output_file_name_);
+    // return createFilePath(directory_path_, output_file_name_);
+    return output_file_name_;
 }

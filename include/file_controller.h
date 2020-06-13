@@ -16,7 +16,7 @@ class FileController
 {
 private:
     std::map< std::string, std::vector<std::string> > map_args_;
-    std::string directory_path_;
+    // std::string directory_path_;
     std::string output_file_name_;
     const std::string EXTENSION = ".pcd";
     const std::vector<std::string> KEYS = {"-i", "-d", "-o"};
