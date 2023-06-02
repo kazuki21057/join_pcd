@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
 project(join_pcd)
 
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++14)
 
 find_package(PCL 1.2 REQUIRED)
 
